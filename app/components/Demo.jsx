@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { BoltIcon } from "@heroicons/react/24/outline";
 
-import { copy, link, loader, tick } from "../public";
+import { copy, link, loader, tick } from "../../public";
 
 const Demo = () => {
   const [article, setarticle] = useState({

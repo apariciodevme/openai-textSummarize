@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { Hero, Demo } from "@/components";
-
+import { Hero, Demo } from "./components";
 export default function Home() {
   return (
     <main className="min-h-screen p-4 ">
