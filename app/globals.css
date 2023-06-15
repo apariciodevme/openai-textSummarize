@@ -17,23 +17,13 @@
     background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%);
     position: absolute;
     content: "";
-    z-index: 2;
+    z-index: 2; 
     width: 100%;
     height: 100%;
     top: 0;
   }
   
-  .main:after {
-    content: "";
-    background-image: url("/src/assets/grid.svg");
-    z-index: 1;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    opacity: 0.4;
-    filter: invert(1);
-  }
+  
   
   .gradient {
     height: fit-content;
@@ -76,7 +66,7 @@
     @apply rounded-full border border-black bg-black py-1.5 px-5 text-sm text-white transition-all hover:bg-white hover:text-black;
   }
   
-  .head_text {
+  .head_text { 
     @apply mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl text-center;
   }
   

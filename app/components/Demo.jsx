@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { useLazyGetSummaryQuery } from "../ReduxGlobal/article";
 
 import { useState, useEffect } from "react";
 import { BoltIcon } from "@heroicons/react/24/outline";
@@ -12,9 +13,20 @@ const Demo = () => {
     summary: "",
   });
 
+  const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
+
   const handleSubmit = async (e) => {
-    
-  }
+    e.preventDefault();
+    const { data } = await getSummary({ articleUrl: article.url });
+
+    if (data?.summary) {
+      const newArticle = { ...article, summary: data.summary };
+
+      setarticle(newArticle);
+
+      console.log(newArticle)
+    }
+  };
 
   return (
     <section className="w-full max-w-xl mt-16">
@@ -35,9 +47,12 @@ const Demo = () => {
             type="url"
             placeholder="enter url"
             value={article.url}
-            onChange={(e) => setarticle({
-              ...article, url: e.target.value
-            })}
+            onChange={(e) =>
+              setarticle({
+                ...article,
+                url: e.target.value,
+              })
+            }
             required
             className="url_input peer"
           />
