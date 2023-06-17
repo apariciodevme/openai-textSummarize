@@ -11,6 +11,7 @@
     justify-content: center;
     padding: 120px 24px 160px 24px;
     pointer-events: none;
+    
   }
   
   .main:before {
@@ -58,8 +59,10 @@
   
   /* Tailwind Styles */
   
+
+
   .app {
-    @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
+    @apply relative z-10 flex flex-col items-center justify-center px-6 mx-auto max-w-7xl sm:px-16;
   }
   
   .black_btn {
@@ -67,15 +70,17 @@
   }
   
   .head_text { 
-    @apply mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl text-center;
+    @apply mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl text-center tracking-tight;
   }
   
   .orange_gradient {
-    @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
+    @apply text-transparent bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text;
   }
+
+   
   
   .desc {
-    @apply mt-5 text-lg text-gray-600 sm:text-xl text-center max-w-2xl;
+    @apply max-w-2xl mt-5 text-lg text-center text-gray-600 sm:text-xl;
   }
   
   .url_input {
@@ -87,7 +92,7 @@
   }
   
   .link_card {
-    @apply p-3 flex justify-start items-center flex-row bg-white border border-gray-200 gap-3 rounded-lg cursor-pointer;
+    @apply flex flex-row items-center justify-start gap-3 p-3 bg-white border border-gray-200 rounded-lg cursor-pointer;
   }
   
   .copy_btn {
@@ -95,7 +100,7 @@
   }
   
   .blue_gradient {
-    @apply font-black bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
+    @apply font-black text-transparent bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text;
   }
   
   .summary_box {

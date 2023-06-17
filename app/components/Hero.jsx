@@ -1,13 +1,14 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Hero = () => {
   return (
     <header className="flex flex-col items-center justify-center w-full">
       <nav className="flex items-center justify-between w-full mb-10">
-        <Image src={"/logo.svg"} alt="logo" width={80} height={80} />
-        <button className="px-6 py-1 text-sm bg-neutral-900 text-neutral-100 rounded-3xl">
-          Gitub
+        <h1 className="text-2xl font-extrabold tracking-tighter">OpenAI Summarizer</h1>
+        <button className="px-6 py-1 text-sm font-semibold bg-neutral-900 text-neutral-100 rounded-3xl">
+        <Link href='https://github.com/apariciodevme/openai-textSummarize'>Gitub</Link>
         </button>
       </nav>
 
