@@ -114,7 +114,7 @@ const Demo = () => {
       {/* Display Result */}
       <div className="flex items-center justify-center max-w-full my-10">
         {isFetching ? (
-          <img src={loader} alt="loader" className="object-contain w-20 h-20" />
+          <Image src={'/loader.svg'} width={80} height={80} alt="loading" />
         ) : error ? (
           <p className="font-bold text-center text-black font-inter">
             Well, that wasn't supposed to happen...
