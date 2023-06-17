@@ -13,7 +13,21 @@ const Demo = () => {
     summary: "",
   });
 
+  const [allArticles, setAllArticles] = useState([]);
+
+  const [copied, setCopied] = useState("");
+
   const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
+
+  useEffect(() => {
+    const articlesFromLocalStorage = JSON.parse(
+      localStorage.getItem("articles")
+    );
+
+    if (articlesFromLocalStorage) {
+      setAllArticles(articlesFromLocalStorage);
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,11 +35,19 @@ const Demo = () => {
 
     if (data?.summary) {
       const newArticle = { ...article, summary: data.summary };
+      const updateddArticles = [newArticle, ...allArticles];
 
       setarticle(newArticle);
+      setAllArticles(updateddArticles);
 
-      console.log(newArticle)
+      localStorage.setItem("articles", JSON.stringify(updateddArticles));
     }
+  };
+
+  const handleCopy = (copyUrl) => {
+    setCopied(copyUrl);
+    navigator.clipboard.writeText(copyUrl);
+    setTimeout(() => setCopied(false), 3000);
   };
 
   return (
@@ -65,9 +87,57 @@ const Demo = () => {
         </form>
 
         {/*Browse URL history*/}
+        <div className="flex flex-col gap-1 overflow-y-auto max-h-60">
+          {allArticles.map((item, index) => (
+            <div
+              key={`link-${index}`}
+              onClick={() => setarticle(item)}
+              className="link_card"
+            >
+              <div className="copy_btn" onClick={() => handleCopy(item.url)}>
+                <Image
+                  src={copied === item.url ? tick : copy}
+                  width={20}
+                  height={20}
+                  alt="copy_icon"
+                  className="contain"
+                />
+              </div>
+              <p className="flex-1 text-sm font-medium text-blue-500 truncate">
+                {item.url}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/*Display Results*/}
+      {/* Display Result */}
+      <div className="flex items-center justify-center max-w-full my-10">
+        {isFetching ? (
+          <img src={loader} alt="loader" className="object-contain w-20 h-20" />
+        ) : error ? (
+          <p className="font-bold text-center text-black font-inter">
+            Well, that wasn't supposed to happen...
+            <br />
+            <span className="font-normal text-gray-700 font-satoshi">
+              {error?.data?.error}
+            </span>
+          </p>
+        ) : (
+          article.summary && (
+            <div className="flex flex-col gap-3">
+              <h2 className="text-xl font-bold text-gray-600 font-satoshi">
+                Article <span className="blue_gradient">Summary</span>
+              </h2>
+              <div className="summary_box">
+                <p className="text-sm font-medium text-gray-700 font-inter">
+                  {article.summary}
+                </p>
+              </div>
+            </div>
+          )
+        )}
+      </div>
     </section>
   );
 };
