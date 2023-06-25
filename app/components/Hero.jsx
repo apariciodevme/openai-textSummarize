@@ -6,9 +6,13 @@ const Hero = () => {
   return (
     <header className="flex flex-col items-center justify-center w-full">
       <nav className="flex items-center justify-between w-full mb-10">
-        <h1 className="text-2xl font-extrabold tracking-tighter">OpenAI Summarizer</h1>
+        <h1 className="text-2xl font-extrabold tracking-tighter">
+          GPT-4 Text Summarizer
+        </h1>
         <button className="px-6 py-1 text-sm font-semibold bg-neutral-900 text-neutral-100 rounded-3xl">
-        <Link href='https://github.com/apariciodevme/openai-textSummarize'>Gitub</Link>
+          <Link href="https://github.com/apariciodevme/openai-textSummarize">
+            Gitub
+          </Link>
         </button>
       </nav>
 
@@ -18,8 +22,9 @@ const Hero = () => {
       </h1>
       <h2 className="desc">
         {" "}
-        Simplify your reading with Sumis, an open-source article summarizer that
-        transforms lengthy articles into clear and concise summaries
+        Simplify Texts. Save Time. Summarize effortlessly with our
+        OpenAI-powered web app.
+        {" "}
       </h2>
     </header>
   );
